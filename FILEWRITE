@@ -1,0 +1,32 @@
+    private void WriteActionPerformed(java.awt.event.ActionEvent evt) {                                      
+        String filename = fnametxt.getText();
+        String extn = extnt.getText();
+        String contnt = content.getText();
+        if (filename.isEmpty()) {
+            JOptionPane.showMessageDialog(null, " PLEASE ENTER THE FILENAME ");
+        } else {
+            try {
+                if (extn.isEmpty()) { //If User Kept The Extention Empty 
+                    File f1 = new File("C:\\File\\" + filename + ".txt");
+                    try (FileWriter fw1 = new FileWriter(f1)) {
+                        fw1.write(contnt);
+                        JOptionPane.showMessageDialog(null, "File Has Created");
+                    } catch (Exception e) {
+                        System.out.println(e);
+                        JOptionPane.showMessageDialog(null, e);
+                    }
+                } else { 
+                    File f1 = new File("C:\\File\\"+filename+"."+extn);
+                    try (FileWriter fw1 = new FileWriter(f1)) {
+                        fw1.write(contnt);
+                        JOptionPane.showMessageDialog(null, "File Has Created");
+                    } catch (Exception e) {
+                        System.out.println(e);
+                        JOptionPane.showMessageDialog(null, e);
+                    }
+                }
+
+            } catch (Exception e) {
+            }
+        }
+    }
